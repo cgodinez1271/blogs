@@ -11,7 +11,7 @@ tags:
 ---
 ![image](title.png)
 
-En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinión es un de los mejores actualemente: [Master Apache JMeter From load testing to DevOps]. Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
+En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinión es un de los mejores actualmente: [Master Apache JMeter From load testing to DevOps](https://leanpub.com/master-jmeter-from-load-test-to-devops). Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
 
 ## Documentación obsoleta
 
@@ -25,13 +25,15 @@ La mejor práctica es **no** usar BeanShell o Javascript por que degradan signif
 
 La mejor práctica es **no** user el modo Non-GUI para las pruebas de carga. El modo GUI se usa en la fase de desarrollo del script, pero que una vez esta fase está completa la recomendación is cambiar al modo non-GUI.
 
-## HTML Reported
+## Reporte HTML
 
 JMeter ofrece muchas alternativas para graficar los resultados en el modo-GUI. Sin embargo la mejor práctica es producir el report HTML al final de la ejecución del test (en modo non-GUI):
 ```
 jmeter -n -t [jmx file] -l [results file] -e -o [\Path to output folder]
 ```
 Les recomiedo ver el manual en este [enlace](https://jmeter.apache.org/usermanual/generating-dashboard.html).
+
+Si por alguna razón hubiera un gráfico que no este contenido el report HTML, siempre hay la oportunidad cargar el file de resultados en el modo GUI.
 
 ## No XML modificaciones directas
 
