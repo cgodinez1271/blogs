@@ -13,8 +13,6 @@ tags:
 
 En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinión es un de los mejores actualemente: [Master Apache JMeter From load testing to DevOps]. Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
 
-[Interview with two JMeter developers and authors of the book Master JMeter] (https://www.youtube.com/watch?v=0CcUqfuOi0I)
-
 ## Documentación obsoleta
 
 Puesto que JMeter ha estado disponible por muchos años hay que tener cuidado en consultar blogs, videos, y otra documentación. Cualquier información que fue publicada hace dos años o se refiera a versions antes de 4.0 es probablemente obsoleta. La mejor práctica es consultar la [documentación official](https://jmeter.apache.org/usermanual/index.html) y la historia del cambios atravéz de las [differentes versiones](https://jmeter.apache.org/changes_history.html).
