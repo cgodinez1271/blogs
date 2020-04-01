@@ -11,43 +11,45 @@ tags:
 ---
 ![image](title.png)
 
-En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinion es un de los mejores actualemente: [Master Apache JMeter From load testing to DevOps]. Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
+En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinión es un de los mejores actualemente: [Master Apache JMeter From load testing to DevOps]. Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
 
 [Interview with two JMeter developers and authors of the book Master JMeter] (https://www.youtube.com/watch?v=0CcUqfuOi0I)
 
-## Documentacion obsoleta
+## Documentación obsoleta
 
-Puesto que JMeter ha estado en le mercado por muchos años hay que tener cuidado en consultar blogs, videos, y otra documentacion que probablemente este obsoleta. La mejor practica es consultar la [documentation official](https://jmeter.apache.org/usermanual/index.html) y la historia del cambios atravez de las [differentes versiones](https://jmeter.apache.org/changes_history.html)
+Puesto que JMeter ha estado disponible por muchos años hay que tener cuidado en consultar blogs, videos, y otra documentación. Cualquier información que fue publicada hace dos años o se refiera a versions antes de 4.0 es probablemente obsoleta. La mejor práctica es consultar la [documentación official](https://jmeter.apache.org/usermanual/index.html) y la historia del cambios atravéz de las [differentes versiones](https://jmeter.apache.org/changes_history.html).
 
 ## Performance
 
-La mejor practica es **no** usar BeanShell o Javascript por que degradan significamente el performance de la herramienta. La mejor practica is usar JSR223 que usa Groovy como default. Groovy es un lenguage moderno y poderoso que funciona con la últimas version de Java.
+La mejor práctica es **no** usar BeanShell o Javascript por que degradan significamente el performance de la herramienta. La mejor práctica is usar JSR223 que usa Groovy como default. Groovy es un lenguage moderno y poderoso que funciona con la últimas version de Java.
 
 ## Usar el modo Non-Gui
 
-La mejor practica es **no** user el modo Non-GUI para las pruebas de carga. El modo GUI se usa en la fase de desarrollo del script, pero que una vez esta fase esta completa la recomendacion is cambiar al modod non-GUI
+La mejor práctica es **no** user el modo Non-GUI para las pruebas de carga. El modo GUI se usa en la fase de desarrollo del script, pero que una vez esta fase está completa la recomendación is cambiar al modo non-GUI.
 
 ## HTML Reported
 
-JMeter ofrece muchos alternativas para graficar los resultados en el modo-GUI. La mejor práctica es 
-
-https://jmeter.apache.org/usermanual/generating-dashboard.html
+JMeter ofrece muchas alternativas para graficar los resultados en el modo-GUI. Sin embargo la mejor práctica es producir el report HTML al final de la ejecución del test (en modo non-GUI):
+```
+jmeter -n -t [jmx file] -l [results file] -e -o [\Path to output folder]
+```
+Les recomiedo ver el manual en este [enlace](https://jmeter.apache.org/usermanual/generating-dashboard.html).
 
 ## No XML modificaciones directas
 
-La mejor práctica es **nunca** manipular directamente el XML file donde JMeter archiva el test (*.jmx file). 
+La mejor práctica es **nunca** manipular directamente el XML file donde JMeter guarda el test (*.jmx file).
 
-## Dominar el concepto de orden de ejecución 
+## Dominar el concepto de orden de ejecución
 
-En breve, el orden de ejecución en JMeter obedece a un jerarquía muy especifica. Nuestro ilustre colega Antonio presenta los detalles del [Orden de ejecución en JMeter](https://jmeterenespanol.org/blog/2019-10-04-ejecucion-antonio/)
+En breve, el orden de ejecución de los elements en JMeter obedece a unas reglas específicas. Nuestro ilustre colega Antonio presenta los detalles del orden de ejecución en JMeter [en este post](https://jmeterenespanol.org/blog/2019-10-04-ejecucion-antonio/).
 
 ## Variables y Propiedades
 
-La mejor práctica es entender claramente la diferencias entre Variables y Propiedades.  Una *Variable* es un valor dinámico que es exclusivo a un hilo o *Vuser*. Variables usualmente se definen usando el elemento *User Defined Variables* al nivel del plan. La alternativa es definir la propiedades en la línea de commando en el modo *non-Gui*.
+La mejor práctica es entender claramente las diferencias entre Variables y Propiedades.  Una *Variable* es un valor dinámico que es exclusivo a un hilo o *Vuser*. Variables usualmente se definen usando el elemento *User Defined Variables* al nivel del plan. Durante la ejecución de la prueba, el hilo hace una copia local de la variable y puede modificar este valor sin afectar los otros hilos de la prueba. Su uso esta normalmente limitado a data de usuarios y reglas de correlación. Variable son accesadas usando ${varName}.
 
-Por otra parte, una *Propiedad* es un valor dinámico que es común a todos los hilos (Vusers). Usualmente, las *propiedades* se definen en los files *.properties localizados en el directorio $JMETER_HOME/bin. La mejor práctica indica 
+Por otra parte, una *Propiedad* es un valor dinámico que es **común** a todos los hilos (Vusers) y que normalmente se usa para definir la información relativa al ambiente de ejecucion. Propiedades son accesadas usando la función *__P*. Por ejemplo, *propA* sera leida usando *{__P(propA)}*.
 
-## Use Funciones 
+## Use Funciones
 
 JMeter provee una lista muy completa de funciones que permiten optimizar la creación de *scripts* de pruebas. La mejor práctica es familiarizarse y usar estas funciones en véz de tratar de 'reinventar la rueda'. Por ejemplo, nuestro ilustre colega Antonio nos presenta algunas [funciones para especificar valores de tiempo](https://jmeterenespanol.org/blog/2019-11-15-functiempo-delvis/).
 
