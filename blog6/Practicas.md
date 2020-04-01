@@ -11,8 +11,7 @@ tags:
 ---
 ![image](title.png)
 
-En esta entrada listamos las mejores prácticas en JMeter. Lo interesante de esta lista de mejores practicas es que es sugerida por de dos expertos mas conocidos en el mundo de performance: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinion es un de los mejores actualemente: [Master Apache JMeter From load
-testing to DevOps]
+En esta entrada listamos las mejores prácticas en JMeter. Lo interesante de esta lista es que es fue propuesta por de dos de los mas conocidos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que en mi opinion es un de los mejores actualemente: [Master Apache JMeter From load testing to DevOps]. Les recomiendo la version *ebook*. Yo he añadido comentarios y ejemplos para clarificar algunos de los conceptos.
 
 [Interview with two JMeter developers and authors of the book Master JMeter] (https://www.youtube.com/watch?v=0CcUqfuOi0I)
 
@@ -31,7 +30,6 @@ La mejor practica es **no** user el modo Non-GUI para las pruebas de carga. El m
 ## HTML Reported
 
 
-
 ## No XML modificaciones directas
 
 La mejor practica es **nunca** manipular directamente el XML file donde JMeter archiva el test (*.jmx file).
@@ -43,14 +41,22 @@ En breve **scoping** es ...
 
 ## Variables y Propiedades
 
-La mejor practica es claramente entender la diferencias entre Variables y Propiedades.  Una *variable* ... 
+La mejor práctica es claramente entender la diferencias entre Variables y Propiedades.  Una *variable* ... 
 
 ## Use Funciones 
 
-JMeter tiene una lista muy larga de funciones que nos permiten 
-[Funciones para especificar valores de tiempo](https://jmeterenespanol.org/blog/2019-11-15-functiempo-delvis/)
+JMeter provee una lista muy completa de funciones que permiten optimizar el creación de *scripts* de pruebas. La mejor práctica es familiarizarse y usar estas funciones en véz de tratar de 'reinventar la rueda'. Por ejemplo, nuestro ilustre colega Antonio nos presenta algunas [funciones para especificar valores de tiempo](https://jmeterenespanol.org/blog/2019-11-15-functiempo-delvis/)
 
-Ejemplo usando UUID and string ...
+Por si esto fuera poco, JMeter tiene un *plugin* que 
+
+Ejemplo muy común es usar la función UUID (Universal Unique ID) para crear una direción de email aleatoria en la siguiente forma:
+
+```
+{
+    "email": "${__substring(${__UUID()}, 0, 8)}.${__substring(${__UUID()}, 25, 35)}@gmail.com", 
+}
+```
+Nota: el ejemplo usa la función *substring* que es parte el plugin mencionado.
 
 ## Modelos Abiertos vs Modelos Cerrados
 
