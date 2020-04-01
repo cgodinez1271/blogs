@@ -1,0 +1,117 @@
+<html xmlns:jmeter="http://jmeter.apache.org/">
+   <title>Schematic view of Test Plan</title>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style>
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAKAQMAAABPHKYJAAAAA1BMVEWIiIhYZW6zAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH1ggGExMZBky19AAAAAtJREFUCNdjYMAEAAAUAAHlhrBKAAAAAElFTkSuQmCC') repeat-y;
+    margin: 0;
+    padding: 0;
+}
+ul.tree ul {
+    margin-left: 10px;
+}
+ul.tree li {
+    margin: 0;
+    padding: 0 12px;
+    line-height: 20px;
+    background:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUAQMAAACK1e4oAAAABlBMVEUAAwCIiIgd2JB2AAAAAXRSTlMAQObYZgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YIBhQIJYVaFGwAAAARSURBVAjXY2hgQIf/GTDFGgDSkwqATqpCHAAAAABJRU5ErkJggg==') no-repeat;
+    color: #369;
+}
+ul.tree li:last-child { 
+    background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUAQMAAACK1e4oAAAABlBMVEUAAwCIiIgd2JB2AAAAAXRSTlMAQObYZgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YIBhQIIhs+gc8AAAAQSURBVAjXY2hgQIf/GbAAAKCTBYBUjWvCAAAAAElFTkSuQmCC') no-repeat; 
+}
+</style>
+   </head>
+   <body>
+      <ul class="tree" id="tree">
+         <li><b>load test </b>
+            "Pacing  Example" 
+            (globalVars:[], 
+            executeTearDownThreadsOnShutdown: )
+            <br>
+            &nbsp;&nbsp;&nbsp;Comments: <i style="color:green"></i></li>
+         <li>
+            <ul>
+               <li><b>kg.apc.jmeter.vizualizers.CorrectedResultCollector</b>
+                  "jp@gc - Active Threads Over Time" </li>
+               <li><b>write samples</b>
+                  "Summary Report" </li>
+               <li><b>com.blazemeter.jmeter.threads.arrivals.ArrivalsThreadGroup</b>
+                  "Scenario Uno" <br>
+                  &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Target rate = Thread Group arrivals/sec (per Sample!)</i></li>
+               <li>
+                  <ul>
+                     <li><b>write samples</b>
+                        "Aggregate Report" </li>
+                     <li><b>kg.apc.jmeter.vizualizers.CorrectedResultCollector</b>
+                        "jp@gc - Hits per Second" </li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 1.1" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 1 sec</i></li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 1.2" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 2 secs</i></li>
+                     <li>
+                        <ul>
+                           <li><b>think-time Constant</b>
+                              "Constant Timer" 
+                              (const:2000ms)
+                              </li>
+                        </ul>
+                     </li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 1.3" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 3 secs</i></li>
+                     <li>
+                        <ul>
+                           <li><b>think-time Constant</b>
+                              "Constant Timer" 
+                              (const:2000ms)
+                              </li>
+                        </ul>
+                     </li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 1.4" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 4 secs</i></li>
+                     <li>
+                        <ul>
+                           <li><b>think-time Constant</b>
+                              "Constant Timer" 
+                              (const:2000ms)
+                              </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+               <li><b>com.blazemeter.jmeter.threads.arrivals.ArrivalsThreadGroup</b>
+                  "Scenario Dos" <br>
+                  &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Target rate = Thread Group arrivals/sec (per Sample!)</i></li>
+               <li>
+                  <ul>
+                     <li><b>write samples</b>
+                        "Aggregate Report" </li>
+                     <li><b>kg.apc.jmeter.vizualizers.CorrectedResultCollector</b>
+                        "jp@gc - Hits per Second" </li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 2.1" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 1 sec</i></li>
+                     <li><b>kg.apc.jmeter.samplers.DummySampler</b>
+                        "Paso 2.2" <br>
+                        &nbsp;&nbsp;&nbsp;Comments: <i style="color:green">Response Time: 2 secs</i></li>
+                     <li>
+                        <ul>
+                           <li><b>think-time Constant</b>
+                              "Constant Timer" 
+                              (const:2000ms)
+                              </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </body>
+</html>
