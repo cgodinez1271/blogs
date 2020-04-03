@@ -43,21 +43,21 @@ La mejor práctica es **nunca** manipular directamente el XML file donde JMeter 
 
 ## Dominar el concepto de orden de ejecución
 
-En breve, el orden de ejecución de los elementos en JMeter obedece a reglas específicas. Nuestro ilustre colega Antonio presenta los detalles del orden de ejecución en este [post](https://jmeterenespanol.org/blog/2019-10-04-ejecucion-antonio/).
+En breve, el orden de ejecución de los elementos en JMeter obedece a reglas específicas. Nuestro ilustre colega Antonio presenta los detalles del *orden de ejecución* en este [post](https://jmeterenespanol.org/blog/2019-10-04-ejecucion-antonio/).
 
 ## Variables y Propiedades
 
-La mejor práctica es entender claramente las diferencias entre Variables y Propiedades.  Una *Variable* es un valor dinámico que es exclusivo a un hilo o *Usuario virtual (VUsers)*. Variables usualmente se definen usando el elemento *User Defined Variables* al nivel del plan. Durante la ejecución de la prueba, el hilo hace una copia local de la variable y puede modificar este valor sin afectar los otros hilos de la prueba. Su uso esta normalmente limitado a data de usuarios y reglas de correlación. Variables son accesadas usando *${varName}*. Nuestro experimentado colega Delvis ilustra como usar variables en durante el proceso de correlación en este [post](https://jmeterenespanol.org/blog/2019-11-22-correlacion-delvis/).
+La mejor práctica es entender claramente las diferencias entre Variables y Propiedades.  Una *Variable* es un valor dinámico que es exclusivo a un hilo o *usuario virtual (VUsers)*. Variables usualmente se definen usando el elemento *User Defined Variables* al nivel del plan. Durante la ejecución de la prueba, el hilo hace una copia local de la variable y puede modificar este valor sin afectar los otros hilos de la prueba. Su uso esta normalmente limitado a data de usuarios y reglas de correlación. Variables son accesadas usando *${varName}*. Nuestro experimentado colega Delvis ilustra como usar variables en durante el proceso de correlación en este [post](https://jmeterenespanol.org/blog/2019-11-22-correlacion-delvis/).
 
-Por otra parte, una *Propiedad* es un valor dinámico que es **común** a todos los hilos y que normalmente se usa para definir la información relativa al ambiente de ejecucion. Propiedades son accesadas usando la función *__P*. Por ejemplo, *propX* sera leida usando *{__P(propX)}*.
+Por otra parte, una *Propiedad* es un valor dinámico que es **común** a todos los hilos y que normalmente se usa para definir la información relativa al *ambiente de ejecucion*. Propiedades son accesadas usando la función *__P*. Por ejemplo, la propiedad *PropX* sera leida usando *{__P(propX)}*.
 
 ## Use Funciones
 
-JMeter provee una lista muy completa de funciones que permiten optimizar la creación de *scripts* de pruebas. La mejor práctica es familiarizarse y usar estas funciones en véz de tratar de 'reinventar la rueda'. Por ejemplo, nuestro ilustre colega Antonio nos presenta algunas [funciones para especificar valores de tiempo](https://jmeterenespanol.org/blog/2019-11-15-functiempo-delvis/).
+JMeter provee una lista muy completa de funciones que permiten optimizar la creación de *scripts* de pruebas. La mejor práctica es familiarizarse y usar estas funciones en véz de tratar de 'reinventar la rueda'. En este [post](https://jmeterenespanol.org/blog/2019-11-15-functiempo-delvis/), nuestro ilustre colega Antonio nos presenta algunas funciones para especificar valores de tiempo.
 
 Por si esto fuera poco, JMeter tiene otro [*plugin*](https://jmeter-plugins.org/wiki/Functions/) que provee funciones addicionales.
 
-Ejemplo muy común es usar la función UUID (Universal Unique ID) para crear una direción de email aleatoria de la siguiente forma:
+Un ejemplo muy común es usar la función UUID (Universal Unique ID) para crear una direción de email aleatoria de la siguiente forma:
 ```
 {
     "email": "${__substring(${__UUID()}, 0, 8)}.${__substring(${__UUID()}, 25, 35)}@gmail.com", 
@@ -69,4 +69,4 @@ Nota: el ejemplo usa la función *substring* que es parte el *plugin* mencionado
 
 La mejor práctica es usar el modelo correcto para la aplicación que se esta probando. En un **modelo abierto** los usuarios arriban a la applicación en forma asincrónica, indenpendientemente del número de *transacciones* que estan siendo procesadas en el *sistema bajo prueba* (SUT). La métrica de esta tipo de prueba se define en términos de *transacciones x unidad-de-tiempo* (TPS). Un ejemplo típico son la aplicaciones *e-commerce* (Amazon).
 
-Por otro lado, en un **modelo cerrado** el número usuarios es fijo, por lo tanto el número de transacciones esta limitado por la cantidad de usuarios en el sistema. Un ejemplo típico es un centro de llamadas (call center) donde la cantidad de llamadas aceptadas esta limitada por el número de operadores; si todos operadores estan ocupados, el sistema no acceptará mas llamadas. La métrica en este caso es la *concurrencia*.
+Por otro lado, en un **modelo cerrado** el número usuarios es fijo, por lo tanto el número de transacciones esta limitado por la cantidad de usuarios en el sistema. Un ejemplo típico es un centro de llamadas (call center) donde la cantidad de llamadas aceptadas esta limitada por el número de operadores; si todos operadores estan ocupados, el sistema no acceptará mas llamadas. La métrica en este caso es la *concurrencia* de *usuarios virtuales*.
