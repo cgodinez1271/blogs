@@ -11,11 +11,13 @@ tags:
 ---
 ![image](title.png)
 
-En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que, en mi opinión, es un de los mejores actualmente: [Master Apache JMeter From load testing to DevOps](https://leanpub.com/master-jmeter-from-load-test-to-devops). Les recomiendo la versión *ebook*. Yo he añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
+En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que, en mi opinión, es un de los mejores actualmente: [Master Apache JMeter From load testing to DevOps](https://leanpub.com/master-jmeter-from-load-test-to-devops). Les recomiendo la versión *ebook*. He añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
 
 ## Documentación obsoleta
 
-Puesto que JMeter ha estado disponible por muchos años hay que tener cuidado en consultar blogs, videos, y otra documentación. Cualquier información que fue publicada hace dos años o se refiera a versions antes de 4.0 es probablemente obsoleta. La mejor práctica es consultar la [documentación official](https://jmeter.apache.org/usermanual/index.html) y la historia del cambios atravéz de las [differentes versiones](https://jmeter.apache.org/changes_history.html).
+Puesto que JMeter ha estado disponible por muchos años hay que tener cuidado en consultar blogs, videos, y otra documentación. Cualquier información que fue publicada hace más o menos dos años, o se refiera a versions antes de 4.0 es probablemente obsoleta. La mejor práctica es consultar la [documentación official](https://jmeter.apache.org/usermanual/index.html) y la historia del cambios atravéz de las [differentes versiones](https://jmeter.apache.org/changes_history.html).
+
+Un fuente importante de información es la página de **JMeter en Español** en [Slack](https://jmeterenespanol.slack.com) y [Facebook](https://www.facebook.com/groups/jmeterenespanol/?ref=group_header).
 
 ## Performance
 
@@ -27,7 +29,7 @@ La mejor práctica es **no** user el modo Non-GUI para las pruebas de carga. El 
 
 ## Reporte HTML
 
-JMeter ofrece muchas alternativas para graficar los resultados en el modo-GUI. Sin embargo la mejor práctica es producir el report HTML al final de la ejecución del test (en modo non-GUI):
+JMeter ofrece muchas alternativas para graficar los resultados en el modo-GUI. Sin embargo la mejor práctica es producir el reporte HTML al final de la ejecución del test (en modo non-GUI):
 ```
 jmeter -n -t [jmx file] -l [results file] -e -o [\Path to output folder]
 ```
