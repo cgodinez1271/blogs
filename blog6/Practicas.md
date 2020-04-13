@@ -11,7 +11,7 @@ tags:
 ---
 ![image](title.png)
 
-En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gomes Rodrigues. Ellos son los autores de un libro que, en mi opinión, es uno de los mejores actualmente: [Master Apache JMeter From load testing to DevOps](https://leanpub.com/master-jmeter-from-load-test-to-devops). Les recomiendo la versión *ebook*. He añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
+En esta entrada presentamos las mejores prácticas en JMeter propuestas por dos expertos en el mundo de JMeter: Phillipe Mouawad y Antonio Gómes Rodrígues. Ellos son los autores de un libro que, en mi opinión, es uno de los mejores actualmente: [Master Apache JMeter From load testing to DevOps](https://leanpub.com/master-jmeter-from-load-test-to-devops). Les recomiendo la versión *ebook*. He añadido comentarios y ejemplos para ampliar o/y clarificar algunos de los conceptos.
 
 ## Documentación obsoleta
 
