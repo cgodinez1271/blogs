@@ -49,7 +49,7 @@ En breve, el orden de ejecución de los elementos en JMeter obedece a reglas esp
 
 La mejor práctica es entender claramente las diferencias entre Variables y Propiedades.  Una *Variable* es un valor dinámico que es **exclusivo** a un hilo o usuario virtual (VUser). Variables usualmente se definen usando el elemento *User Defined Variables* al nivel del plan. Durante la ejecución de la prueba, el hilo hace una copia local de la variable y puede modificar este valor sin afectar los otros hilos de la prueba. El uso esta normalmente limitado a *data de usuarios* y *reglas de correlación*. Variables son accesadas usando *${varName}*. Nuestro experimentado colega Delvis ilustra como usar variables durante el proceso de correlación en este [post](https://jmeterenespanol.org/blog/2019-11-22-correlacion-delvis/).
 
-Por otra parte, una *Propiedad* es un valor dinámico que es **común** a todos los hilos y que normalmente se usa para definir la información relativa al *ambiente de ejecución*. Puedes acceder a las Propiedades usando la función *__P()*. Por ejemplo, la propiedad *PropX* será leída usando *{__P(PropX)}*.
+Por otra parte, una *Propiedad* es un valor dinámico que es **común** a todos los hilos y que normalmente se usa para definir la información relativa al *ambiente de ejecución*. Puedes acceder a las Propiedades usando la función *__P()*. Por ejemplo, la propiedad *PropX* será leída usando *${__P(PropX)}*.
 
 ## Use Funciones
 
