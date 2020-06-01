@@ -71,7 +71,7 @@ Por las siguientes razones, la mejor opción es usar de un archivo de propiedade
 
 1. Flexibilidad: podemos crear files de propiedades para diferentes propósitos: para definir un ambiente de pruebas especificas, para alterar número de usuarios & número de hilos, para definir la duracion, etc.
 2. Documentación: las propiedades estarán documentadas en detalle para cada una de las pruebas.
-3. Productividad: un solo script puede ser usado en múltiples pruebas con solo alterar ciertas propiedades.
+3. Productividad: un script puede ser usado en múltiples pruebas con solo alterar ciertas propiedades.
 
 ## Más Flexibilidad
 
@@ -81,8 +81,8 @@ Para mayor flexibilidad, es posible usar una combinación de asignar propiedades
 jmeter -p pruebaQA_05-12-20.properties -n -t EjemploPropiedades.jmx -J HILOS=200
 ```
 
-En este caso, el valor la propiedad de HILOS reemplaza al valor asignado en el file de propiedades mencionado antes.
+En este caso, el valor la propiedad de HILOS substituye al valor asignado en el archivo de propiedades mencionado previamente.
 
 ## Conclusión
 
-Usar propiedades para alterar el comportamiento de un script proporciona la flexibilidad, productividad, y documentación que resultan en un incremento effeciencia en la ejecución de un pruebas de carga.
+Usar propiedades para alterar el comportamiento de un script proporciona la flexibilidad, productividad, y documentación que resultan en un incremento substantivo en la efficiencia de la ejecución de las pruebas de carga.
