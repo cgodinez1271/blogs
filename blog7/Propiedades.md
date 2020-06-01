@@ -13,7 +13,7 @@ tags:
 
 En esta entrada planteamos dos opciones como inicializar propiedades en JMeter.
 
-Empezamos definiendo que es un propiedad en JMeter. Una *propiedad* es un valor *dinámico* que es **común** a todos los hilos, y que normalmente se usa para definir la información relativa al *ambiente de ejecución*. Acceso a las Propiedades es a través de la función *__P()*. Por ejemplo, la propiedad *PropX* será leída usando *${__P(PropX)}*.
+Empezamos definiendo que es un propiedad en JMeter. Una *propiedad* es un valor *dinámico* que es **común** a todos los hilos/VUser; normalmente se utilizan para definir la información especifica al *ambiente de ejecución*. Acceso a las Propiedades es a través de la función *__P()*. Por ejemplo, la propiedad *PropX* será leída usando *${__P(PropX)}*.
 
 **NOTA**: en mi último [blog](https://jmeterenespanol.org/blog/2020-04-13-practicas-carlos/), mencioné dos buenas prácticas relacionadas a este tema:
 
@@ -22,13 +22,15 @@ Empezamos definiendo que es un propiedad en JMeter. Una *propiedad* es un valor 
 
 ## Importancia
 
-La habilidad de inicializar propiedades tiene la importante ventaja que permite modificar el funcionamiento del script **externamente** y en forma **dinámica**. Por ejemplo, supongamos que tenemos un script que valida el performance en un website. Durante el proceso de desarrollar la aplicación, el test se puede inicialmente aplicar al ambiente de *desarrollo*, y posteriormente al de *QA*. En este case, usando una propiedad para configurar el script podemos alterar el URL que representa el ambiente de prueba sin tener necesidad de editar/alterar el script.
+La habilidad de inicializar propiedades tiene la importante ventaja que permite modificar el funcionamiento del script **externamente** y en forma **dinámica**. Por ejemplo, supongamos que tenemos un script que valida el performance en un website. Durante el proceso de desarrollo de una aplicación, el test se puede inicialmente aplicar al ambiente de *desarrollo*, y posteriormente al ambiente de *QA*. En este caso, usando una propiedad para configurar el script podemos alterar el URL que representa el ambiente de prueba sin tener necesidad de editar/alterar el script.
 
 ## Ejemplo
 
 En el siguiente gráfico, inicializamos la configuración de un *tread grupo* usando 3 propiedades:
 
 ![image](graph1.png)
+
+**NOTA**: propiedades pueden ser usadas para configurar múltiples elementos en un test plan (timers, variables, loops, etc).
 
 ## Primera Opción: en la línea de comando (CLI)
 
@@ -61,20 +63,18 @@ jmeter -p pruebaQA_05-12-20.properties -n -t EjemploPropiedades.jmx
 
 En este caso, las variables son inicializadas usando los valores contenidos en el archivo de propiedades.
 
-**NOTA**: es posible incluir estas propiedades directamente en el archivo **user.properties** (localizado en $JMETER_HOME/libexec/lib). Pero la mejor práctica es localizar el archivo en el mismo lugar donde se encuentran los scripts de prueba.
+**NOTA**: es posible incluir estas propiedades directamente en el archivo **user.properties** (localizado en $JMETER_HOME/libexec/lib). Pero la mejor práctica, en mi opinión, es localizar el archivo en el mismo lugar donde se encuentran los scripts de prueba.
 
 ## ¿Cúal es la Mejor Opción?
 
-Por varias razones, la mejor opción es ciertamente el uso de archivos de propiedades:
+Por las siguientes razones, la mejor opción es usar de un archivo de propiedades:
 
-1. Flexibilidad: podemos crear files de propiedades para múltiples propósitos dependiendo de fase the pruebas.
-2. Documentación: las propiedades estarán documentadas en detalle y disponibles.
+1. Flexibilidad: podemos crear files de propiedades para diferentes propósitos: para definir un ambiente de pruebas especificas, para alterar número de usuarios & número de hilos, para definir la duracion, etc.
+2. Documentación: las propiedades estarán documentadas en detalle para cada una de las pruebas.
+3. Productividad: un solo escript puede ser usado en múltiples pruebas con solo alterar algunas propiedades.
+
+**NOTA**: para mayor flexibilidad, es posible usar una combinación de asignar propiedades en la línea de comando, y usando un archivo de propiedades. 
 
 ## Conclusión
 
-Usando files de propiedades cuando 
-
-
-
-
-
+Usar propiedades para alterar el comportamiento de un script propociona la flexibilidad, productividad y apropiada documentación que brinda incrible effeciencia en la ejecución de un prueba de carga.
