@@ -30,11 +30,11 @@ En el siguiente gráfico, inicializamos la configuración de un *tread grupo* us
 
 ![image](graph1.png)
 
-**NOTA**: propiedades pueden ser usadas para configurar múltiples elementos en un *test plan* (timers, variables, loops, etc).
+**NOTA**: Propiedades pueden ser usadas para configurar múltiples elementos en un *test plan* (timers, variables, loops, etc).
 
 ## Primera Opción: en la línea de comando (CLI)
 
-La primera opción es inicializar las propiedades en la línea de comando de la siguiente manera:
+La primera opción es inicializar las propiedades en la línea de comando de ésta manera:
 
 ```
 jmeter -n -t EjemploPropiedades.jmx -J HILOS=100 -J RAMPUP=10 -J DURACION=600
@@ -57,7 +57,7 @@ DURACION=600
 #######################################
 ```
 
-Segundo, utilizamos este archivo de propiedades en la línea de comando:
+Segundo, utilizamos este archivo en la línea de comando (CLI):
 
 ```
 jmeter -p pruebaQA_05-12-20.properties -n -t EjemploPropiedades.jmx
@@ -65,13 +65,13 @@ jmeter -p pruebaQA_05-12-20.properties -n -t EjemploPropiedades.jmx
 
 En este caso, las variables son inicializadas usando los valores contenidos en el archivo de propiedades.
 
-**NOTA**: si bien es posible incluir estas propiedades directamente en el archivo **user.properties** (localizado en la carpeta $JMETER_HOME/libexec/lib),la mejor práctica, en mi opinión, es localizar el archivo en el mismo lugar donde se encuentran los scripts de prueba.
+**NOTA**: Si bien es posible incluir estas propiedades directamente en el archivo **user.properties** (localizado en la carpeta $JMETER_HOME/libexec/lib), la mejor práctica, en mi opinión, es localizar el archivo en el mismo lugar donde se encuentran los scripts de prueba.
 
 ## ¿Cúal es la Mejor Opción?
 
 Por las siguientes razones, la mejor opción es usar de un archivo de propiedades:
 
-1. Flexibilidad: podemos crear files de propiedades para diferentes propósitos: para definir un ambiente de pruebas especificas, para alterar número de usuarios & número de hilos, para definir la duracion, etc.
+1. Flexibilidad: podemos crear files de propiedades para diferentes propósitos: para definir un ambiente de pruebas especificas, para alterar número de usuarios & número de hilos, para definir la duracion de la prueba, etc.
 2. Documentación: permite documentar las propiedades en detalle para cada una de las pruebas.
 3. Productividad: un script puede ser usado en múltiples pruebas alternando el archivo de propiedades.
 
