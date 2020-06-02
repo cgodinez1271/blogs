@@ -87,4 +87,4 @@ En este caso, el valor la propiedad de HILOS substituye al valor asignado en el 
 
 ## Conclusión
 
-Usar propiedades para alterar el comportamiento de un script proporciona la flexibilidad, productividad, y documentación que resultan en un incremento substantivo en la eficiencia en la ejecución de las pruebas de carga.
+El uso de propiedades para alterar el comportamiento de un script proporciona la flexibilidad, productividad, y documentación que resultan en un incremento substantivo en la eficiencia en la ejecución de las pruebas de carga.
