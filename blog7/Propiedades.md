@@ -4,7 +4,7 @@ title: Configurando propiedades en JMeter, dos opciones
 date: 2020-05-01T12:00:00.000Z
 featuredpost: false
 featuredimage: title.png
-description: Deep Dive into JMeter Properties
+description: Configurando propiedades en JMeter, dos opciones
 tags:
   - JMeter
   - propiedades
