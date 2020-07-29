@@ -58,7 +58,7 @@ Implementamos esta técnica en tres pasos:
 ### Paso 1:
 ![image](graph2.png)
 
-Usando el elemento de Configuración [User Defined Variables](https://jmeter.apache.org/usermanual/component_reference.html#User_Defined_Variables) creamos/asignamos una variable que contiene el lugar donde la plantilla reside.
+Usando el elemento de Configuración [User Defined Variables](https://jmeter.apache.org/usermanual/component_reference.html#User_Defined_Variables) creamos/asignamos una variable que contiene el lugar donde el file de la plantilla reside.
 
 ### Paso 2:
 ![image](graph3.png)
