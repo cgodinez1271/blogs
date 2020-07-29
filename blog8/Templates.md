@@ -9,13 +9,13 @@ tags:
   - JMeter
   - Templates
 ---
-![image](tbd.png)
+![image](title.png)
 
-En esta entrada abordamos el tema de usar plantillas (templates) en proceso de pruebas de carga para APIs. Este blog es, en cierta forma, una continuación del nuestro [blog](https://jmeterenespanol.org/blog/2020-06-02-properties-carlos/) anterior donde proponíamos las ventajas de alternar los script de JMeter **externamente** y forma **dinámica**. 
+En esta entrada abordamos el tema de usar plantillas (templates) en el proceso de pruebas de carga para APIs. Este blog es, en cierta forma, una continuación del nuestro [blog](https://jmeterenespanol.org/blog/2020-06-02-properties-carlos/) anterior donde proponíamos las ventajas de alterar los script de JMeter **externamente** y en forma **dinámica**.
 
 ## El Ejemplo
 
-Como sabemos, normalmente las pruebas de carga para APIs requieren enviar un bloque de data en el formato JSON. (Nota: esta bloque de data se conoce en inglés como *payload*). Este bloque esta compuesto por un conjunto de pares de nombre/valores. Por ejemplo:
+Como sabemos, normalmente las pruebas de carga para APIs requieren enviar un bloque de data en el formato JSON. (Nota: esta bloque de data se conoce en inglés como *payload*). Este bloque esta compuesto por un conjunto de pares de nombre/valores como sigue:
 
 ```
 {
@@ -26,19 +26,20 @@ Como sabemos, normalmente las pruebas de carga para APIs requieren enviar un blo
   }
 }
 ```
-Como el propósito de la prueba es crear *pacientes*, incluimos un POST donde añadimos el *payload* en el *Body Data* de el pedido:
+
+En nuestro ejemplo, el propósito de la prueba es crear *pacientes* in cierta aplicación. Para ello incluimos un elemento *HTTP Request* donde añadimos el *payload* en el *Body Data* del pedido:
 
 ![image](graph1.png)
 
-En este gráfico definimos la **Identificación** como un número random usando una porción de la variable [__UUID](https://jmeter.apache.org/usermanual/functions.html#__UUID). También definimos el **Médico** y **Hospital** como variables que serán leídas usando el [CSV Data Set Config](https://jmeter.apache.org/usermanual/component_reference.html#CSV_Data_Set_Config). Este es el proceso estándar.
+En este gráfico definimos la **Identificación** como un número random usando una porción de la variable [__UUID](https://jmeter.apache.org/usermanual/functions.html#__UUID). También definimos las variables **Médico** y **Hospital** cuyos valores serán leídas usando el elemento [CSV Data Set Config](https://jmeter.apache.org/usermanual/component_reference.html#CSV_Data_Set_Config). Este es el proceso estándar.
 
 ## El Problema
 
-El problema surge cuando los parámetros del API cambian causando que tengamos que editar el script para alterar la estructura JSON. Este problema se multiplica cuando el JSON es utilizado en múltiples scripts.
+El problema surge cuando los componentes del API cambian causando que tengamos que editar el script (usando el GUI) para alterar la estructura JSON. Este problema se multiplica cuando esta estructura es utilizada por múltiples scripts.
 
 ## La Alternativa
 
-Una mejor alternativa es create una plantilla/template que contiene la estructura JSON y allí definir los valores en forma dinámica. 
+Una mejor alternativa es crear una plantilla/template que contenga la estructura JSON y allí definir los valores en forma dinámica. Una vez definida la plantilla la guardamos en file llamado **patient_template.json**.
  
  ```
 {
@@ -50,25 +51,35 @@ Una mejor alternativa es create una plantilla/template que contiene la estructur
 }
 ```
 
-Esta plantilla solamente contiene las **referencias** al nombre de las variables. La data actualmente esta contenida en el file CSV. Noten que usamos la función [__eval](https://jmeter.apache.org/usermanual/functions.html#__eval) para forzar la evaluación de las variables al momento de la ejecución.
+Es importante sobresaltar que esta plantilla contiene solamente las **referencias** al valor de las variables. La data (médico y paciente) actualmente está contenida en el file CSV (como lo mencionamos antes). Noten que usamos otra función de JMeter [__eval](https://jmeter.apache.org/usermanual/functions.html#__eval) para forzar la evaluación de las variables al momento de la ejecución.
 
 Implementamos esta técnica en tres pasos:
 
 ### Paso 1:
 ![image](graph2.png)
 
-Usando el elemento de Configuración **User Defined Variables** creamos/asignamos ...
+Usando el elemento de Configuración [User Defined Variables](https://jmeter.apache.org/usermanual/component_reference.html#User_Defined_Variables) creamos/asignamos un variable que contiene el lugar donde la plantilla reside.
 
 ### Paso 2:
 ![image](graph3.png)
 
-Usando el elemento de Pre-Processor **User Parameters** creamos/asignamos ..
+Usando el elemento de [Pre-Processor User Parameters](https://jmeter.apache.org/usermanual/component_reference.html#User_Parameters), creamos/asignamos un parámetro (PATIENT_JSON) que el momento de ejecución toma el valor de la plantilla, de esta manera:
+
+```
+CASE_JSON={
+ "Paciente":{
+    "Identificación": "LT${__substring(${__UUID()}, 0, 8)}",
+    "Médico": "${__eval(${MD_NAME})}",
+    "Hospital": "${__eval(${HOSPITAL_NAME})}"
+  }
+}
+```
 
 ### Paso 3:
 ![image](graph4.png)
 
-Usando el elemento de HTTP Request" **User Defined Variables** creamos/asignamos ..
+Finalmente, en este paso agregamos al **Body Data** del HTTP Request una expresión, que al momento de ejecución, asignará valores en forma dinámica. En otras palabras, la variable **Médico** y **Hospital** toman valores que son extraídos del file CSV respectivo.
 
 ## Conclusión
 
-El uso de plantillas/template en un script proporciona la flexibilidad y productividad que resultan en un incremento substantivo en la eficiencia en la ejecución de las pruebas de carga.
+El uso de plantillas/templates en un script proporciona la flexibilidad y productividad que resultan en un incremento substantivo en la eficiencia en la elaboracion de los *scripts* de pruebas de carga.
