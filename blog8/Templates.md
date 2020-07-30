@@ -66,7 +66,7 @@ Usando el elemento de Configuración [User Defined Variables](https://jmeter.apa
 Usando el elemento de [Pre-Processor User Parameters](https://jmeter.apache.org/usermanual/component_reference.html#User_Parameters), creamos/asignamos un parámetro (PATIENT_JSON) que durante la ejecución toma el valor de la plantilla, de esta manera:
 
 ```
-CASE_JSON={
+PATIENT_JSON={
  "Paciente":{
     "Identificación": "LT${__substring(${__UUID()}, 0, 8)}",
     "Médico": "${__eval(${MD_NAME})}",
