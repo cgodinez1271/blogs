@@ -12,7 +12,7 @@ tags:
 ---
 ![image](title.png)
 
-Una vez completada la ejecución de una prueba en modo CLI (non-GUI) tenemos dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente y de otros beneficios:
+Una vez completada la ejecución de una prueba en modo CLI (non-GUI) tenemos dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente y otros beneficios:
 
 1. generar el reporte HTML usando el fichero generado por la ejecución de test
 2. archivar la información relevante al test
@@ -28,7 +28,7 @@ El segundo punto es sumamente importante puesto que permite reunir **toda la inf
 
 ## Uso
 
-El uso es muy sencillo. El primer paso es el de ejecutar el JMeter script en modo CLI:
+El uso es muy sencillo. El primer paso es ejecutar el JMeter script en modo CLI:
 
 ```
 jmeter -n -t escenario.jmx -l escenario.jtl
@@ -54,7 +54,7 @@ drwxr-xr-x  7 carlos  staff     224 Sep 25 18:37 sbadmin2-1.0.7
 -rw-r--r--  1 carlos  staff     992 Sep 25 18:37 statistics.json
 ```
 
-Finalmente, cambie de directorio y abra el reporte HTML en el browser:
+Finalmente, cambie al directorio y abra el reporte HTML en el browser:
 
 ```
 open index.html
