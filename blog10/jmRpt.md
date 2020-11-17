@@ -4,7 +4,7 @@ title: "El reporte HTML: la herramienta definitiva"
 date: 2020-11-01T12:00:00.000Z
 featuredpost: false
 featuredimage: title.png
-description: "El report HTML: la herramienta definitiva"
+description: "El reporte HTML: la herramienta definitiva"
 tags:
   - JMeter
   - HTLM Report
@@ -12,7 +12,7 @@ tags:
 ---
 ![image](title.png)
 
-Una vez completada la ejecución de una prueba en modo CLI (non-GUI) tenemos dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente y ademas de otros beneficios:
+Una vez completada la ejecución de una prueba en modo CLI (non-GUI) tenemos dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente y de otros beneficios:
 
 1. generar el reporte HTML usando el fichero generado por la ejecución de test
 2. archivar la información relevante al test
