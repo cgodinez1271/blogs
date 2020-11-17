@@ -8,7 +8,7 @@ description: "El reporte HTML: la herramienta definitiva"
 tags:
   - JMeter
   - HTLM Report
-  - Tool
+  - Tools
 ---
 ![image](title.png)
 
