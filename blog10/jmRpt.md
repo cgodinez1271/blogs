@@ -12,7 +12,7 @@ tags:
 ---
 ![image](title.png)
 
-Una vez completada la ejecución de una prueba en modo CLI (non-GUI) hay dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI y usar *complementos* (plugins) para graficar los resultados, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente, ademas de otros beneficios:
+Una vez completada la ejecución de una prueba en modo CLI (non-GUI) hay dos opciones para visualizar los resultados: 1. leer el file de resultados (jtl) usando JMeter en modo GUI y usar *complementos* (plugins) para graficar los resultados, o 2. producir el reporte HTML. En esta entrada les presento un herramienta (shell script) que les permitirá generar el reporte HTML en forma eficiente, además de otros beneficios:
 
 1. generar el reporte HTML usando el fichero generado por la ejecución de test (jtl)
 2. archivar la información relevante del test
